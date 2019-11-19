@@ -34,3 +34,21 @@ pipenv shell
 
 cd wabapp 
 python manage.py migrate
+
+pipenv install numpy
+python -m pip install numpy
+
+where ipython
+ipyhon 
+
+import numpy 
+numpy.__version__
+
+import numpy as np
+np.__version__
+
+v = np.ndarray([1,0,0,0,1,0,1,0,0])
+w = np.ndarray([1,0,1,0,1,0,1,0,1])
+v.data
+v.shape
+w.shape
