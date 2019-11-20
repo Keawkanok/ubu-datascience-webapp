@@ -99,3 +99,12 @@ C:\Users\science\.virtualenvs\ubu-datascience-webapp-nwcO-nrO\Scripts\ipython:1:
 
 In [84]: plt.plot(x,y)
 Out[84]: [<matplotlib.lines.Line2D at 0x720c3c0a20>]
+In [198]: x =y[0,0,...]
+
+In [199]: x[:,0]
+Out[199]: array([ 2,  0,  3,  8,  6, 10,  5, 10,  3,  4])
+
+In [200]: x[0,:]
+Out[200]: array([ 2,  8,  4,  8,  7, 10,  9,  7,  4,  0])
+
+In [201]: y[0,:]
