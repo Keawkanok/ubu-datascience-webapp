@@ -1,5 +1,80 @@
 # ubu-datascience-webapp
 
+ไฟล์ view.py
+from django.shortcuts import render
+import numpy as np
+
+
+def convert_to_ndarray(x):
+    #y = np.random.random((6,5))
+    x = x.replace('[','')
+    x = x.replace(']','')
+    y = []
+
+    for line in x.split('\n'):
+        y.append( list(map(float, line.split())))
+    return np.array(y)
+
+# Create your views here.
+def matmul(req):
+    a = convert_to_ndarray('1 2 3 4 5\n6 7 8 9')        
+    b = convert_to_ndarray('1 2 3 4 5\n6 7 8 9')
+    c = convert_to_ndarray('1 2 3 4 5\n6 7 8 9')
+    if req.method == 'POST':        
+        a = convert_to_ndarray(req.POST['A'])
+        b = convert_to_ndarray(req.POST['B'])
+        c = convert_to_ndarray(req.POST['C'])
+
+    else:
+        pass   
+    print(a)
+    print(type(a))
+    return render(req, 'myapp/matmul.html' ,{
+        'A': a,
+        'B': b,
+        'C': c
+        
+
+    })
+    ไฟล์ templates my matmul.html
+    <!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcom to Matmul</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Welcom to Matmul</h1>
+    <form action="" method="POST">
+            {% csrf_token%}
+           
+        <div style="text-align: center;">    
+            <span>Matrix A:</span>
+            <textarea name="A" id="" cols="60" rows="6">{{A}} </textarea>
+            <span>Matrix B:</span>
+            <textarea name="B" id="" cols="60" rows="6">{{B}} </textarea>
+        </div> <br><br>
+        <div>
+            <button type="SUMBMIT">Maltiply</button>
+        </div>
+        </form>
+        <div style="text-align: center;">
+            <textarea name="C" id="" cols="60" rows="6">{{C}}</textarea>
+        </div>
+        <div style="text-align: center;">
+            <table border="1">
+                {% for r in C %}
+                <tr>
+                    {% for c in r %}
+                    <td>{{c}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+</body>
+</html>
+
 # ubu-datascience-webapp
 
 ```sh
